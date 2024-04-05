@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const connectionstring = "mongodb+srv://kindipmallhi:12august@unravelcluster0.ssgcbvd.mongodb.net/Userlist?retryWrites=true&w=majority&appName=unravelcluster0"
+const connectionstring = "mongodb+srv://@unravelcluster0.ssgcbvd.mongodb.net/Userlist?retryWrites=true&w=majority&appName=unravelcluster0"
 
 mongoose
    .connect(connectionstring)
