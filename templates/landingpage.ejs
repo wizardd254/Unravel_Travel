@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="landingpage.css" />
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <!-- header section -->
+    <div id="menu-bar" class="fas fa-bars"></div>
+    <header>
+      <a href="#" class="logo-navbar"
+        ><img src="logo2.png" alt="Loading.."
+      /></a>
+      <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#book">book</a>
+        <a href="#packages">packages</a>
+        <!-- <a href="#services">services</a> -->
+        <!-- <a href="#review">review</a> -->
+        <a href="#contact">Service</a>
+        <a href="/blog">Blog</a>
+        <a href="/aboutus">About Us</a>
+      </nav>
+
+      <div class="icons">
+        <i class="fa fa-user" id="login-btn"><a href="/login">Logout</a></i>
+      </div>
+      I
+    </header>
+
+    <!-- home section -->
+
+    <section class="home" id="home">
+      <div class="content">
+        <h3>adventure is worthwhile</h3>
+        <p>dicover new places with us, adventure awaits</p>
+        <a href="#packages" class="btn">discover more</a>
+      </div>
+
+      <div class="controls">
+        <span class="vid-btn" data-src="vid1.mp4"></span>
+        <span class="vid-btn" data-src="vid2.mp4"></span>
+        <span class="vid-btn" data-src="vid3.mp4"></span>
+        <span class="vid-btn" data-src="vid4.mp4"></span>
+      </div>
+      <div class="video-container">
+        <!-- put link of video -->
+        <video src="vid1.mp4" id="video-slider" loop autoplay muted></video>
+        <video src="vid2.mp4" id="video-slider" loop autoplay muted></video>
+        <video src="vid3.mp4" id="video-slider" loop autoplay muted></video>
+        <video src="vid4.mp4" id="video-slider" loop autoplay muted></video>
+      </div>
+    </section>
+    <section class="book" id="book">
+      <h1 class="heading">
+        <span>b</span>
+        <span>o</span>
+        <span>o</span>
+        <span>k</span>
+        <span class="space"></span>
+        <span>n</span>
+        <span>o</span>
+        <span>w</span>
+      </h1>
+      <div class="row">
+        <div class="image">
+          <img src="globe-img.svg" alt="" />
+        </div>
+
+        <form id="booking-form">
+          <div class="inputBox">
+            <h3>Where are you?</h3>
+            <select id="originDropdown" name="originDropdown">
+              <option value="" selected disabled>Select a location</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Kochi">Kochi</option>
+              <option value="Ahmedabad">Ahmedabad</option>
+              <option value="Pune">Pune</option>
+              <option value="Goa">Goa</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Visakhapatnam">Visakhapatnam</option>
+              <option value="Kozhikode">Kozhikode</option>
+              <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Guwahati">Guwahati</option>
+              <option value="Madurai">Madurai</option>
+              <option value="Coimbatore">Coimbatore</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Mangalore">Mangalore</option>
+              <option value="Amritsar">Amritsar</option>
+              <option value="Bagdogra">Bagdogra</option>
+              <option value="Bhubaneswar">Bhubaneswar</option>
+              <option value="Rajahmundry">Rajahmundry</option>
+              <option value="Vijayawada">Vijayawada</option>
+              <option value="Tiruchirappalli">Tiruchirappalli</option>
+              <option value="Vadodara">Vadodara</option>
+              <option value="Bhopal">Bhopal</option>
+              <option value="Jammu">Jammu</option>
+              <option value="Surat">Surat</option>
+              <option value="Dehradun">Dehradun</option>
+              <option value="Patna">Patna</option>
+              <option value="Varanasi">Varanasi</option>
+              <option value="Aurangabad">Aurangabad</option>
+              <option value="Jodhpur">Jodhpur</option>
+              <option value="Rajkot">Rajkot</option>
+              <option value="Salem">Salem</option>
+              <option value="Agatti Island">Agatti Island</option>
+              <option value="Leh">Leh</option>
+              <option value="Imphal">Imphal</option>
+              <option value="Agartala">Agartala</option>
+              <option value="Bhuj">Bhuj</option>
+              <option value="Port Blair">Port Blair</option>
+              <option value="Silchar">Silchar</option>
+              <option value="Jamnagar">Jamnagar</option>
+              <option value="Tuticorin">Tuticorin</option>
+              <option value="Rourkela">Rourkela<z/option></option>
+            </select>
+          </div>
+          <div class="inputBox">
+            <h3>Where do you want to go?</h3>
+            <select id="destinationDropdown" name="destinationDropdown">
+              <option value="" selected disabled>Select a location</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Kochi">Kochi</option>
+              <option value="Ahmedabad">Ahmedabad</option>
+              <option value="Pune">Pune</option>
+              <option value="Goa">Goa</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Visakhapatnam">Visakhapatnam</option>
+              <option value="Kozhikode">Kozhikode</option>
+              <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Guwahati">Guwahati</option>
+              <option value="Madurai">Madurai</option>
+              <option value="Coimbatore">Coimbatore</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Mangalore">Mangalore</option>
+              <option value="Amritsar">Amritsar</option>
+              <option value="Bagdogra">Bagdogra</option>
+              <option value="Bhubaneswar">Bhubaneswar</option>
+              <option value="Rajahmundry">Rajahmundry</option>
+              <option value="Vijayawada">Vijayawada</option>
+              <option value="Tiruchirappalli">Tiruchirappalli</option>
+              <option value="Vadodara">Vadodara</option>
+              <option value="Bhopal">Bhopal</option>
+              <option value="Jammu">Jammu</option>
+              <option value="Surat">Surat</option>
+              <option value="Dehradun">Dehradun</option>
+              <option value="Patna">Patna</option>
+              <option value="Varanasi">Varanasi</option>
+              <option value="Aurangabad">Aurangabad</option>
+              <option value="Jodhpur">Jodhpur</option>
+              <option value="Rajkot">Rajkot</option>
+              <option value="Salem">Salem</option>
+              <option value="Agatti Island">Agatti Island</option>
+              <option value="Leh">Leh</option>
+              <option value="Imphal">Imphal</option>
+              <option value="Agartala">Agartala</option>
+              <option value="Bhuj">Bhuj</option>
+              <option value="Port Blair">Port Blair</option>
+              <option value="Silchar">Silchar</option>
+              <option value="Jamnagar">Jamnagar</option>
+              <option value="Tuticorin">Tuticorin</option>
+              <option value="Rourkela">Rourkela</option>
+            </select>
+          </div>
+          <div class="inputBox">
+            <h3>arrivals</h3>
+            <input type="date" id="arrivalDate" name="arrivalDate" />
+          </div>
+          <div class="inputBox">
+            <h3>leaving</h3>
+            <input type="date" id="leavingDate" name="leavingDate" />
+          </div>
+          <input type="submit" class="btn" value="book now" />
+        </form>
+      </div>
+    </section>
+    I
+    <!-- pre planned packages -->
+    <section class="packages" id="packages">
+      <h1 class="heading">
+        <span>p</span>
+        <span>a</span>
+        <span>c</span>
+        <span>k</span>
+        <span>a</span>
+        <span>g</span>
+        <span>e</span>
+        <span>s</span>
+      </h1>
+      <div class="box-container">
+        <div class="box">
+          <img
+            src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/1328/Stunning%20Sinquerim%20Beach.jpg?crop=134:207&downsize=134:207"
+            alt=""
+          />
+          <div class="content">
+            <h3><i class="fa fa-map-marker-alt"></i> Goa</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Veritatis, nam!
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <div class="price">2700INR<span>3500INR</span></div>
+            <a
+              href="https://holidayz.makemytrip.com/holidays/india/search?dest=Goa"
+              class="btn"
+              >book now</a
+            >
+          </div>
+        </div>
+        <div class="box">
+          <img
+            src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/4194/Explore%20the%20offbeat%20Kinnaur%20region.jpg?crop=134:207&downsize=134:207"
+            alt=""
+          />
+          <div class="content">
+            <h3><i class="fa fa-map-marker-alt"></i>Himachal Pradesh</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Veritatis, nam!
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <div class="price">7000INR<span>10000INR</span></div>
+            <a
+              href="https://holidayz.makemytrip.com/holidays/india/search?dest=Himachal%20Pradesh"
+              class="btn"
+              >book now</a
+            >
+          </div>
+        </div>
+        <div class="box">
+          <img
+            src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/1325/Udaipur-Heritage.jpg?crop=134:207&downsize=134:207"
+            alt=""
+          />
+          <div class="content">
+            <h3><i class="fa fa-map-marker-alt"></i> Rajasthan</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Veritatis, nam!
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <div class="price">4400INR<span>6400INR</span></div>
+            <a
+              href="https://holidayz.makemytrip.com/holidays/india/search?dest=Rajasthan"
+              class="btn"
+              >book now</a
+            >
+          </div>
+        </div>
+        <div class="box">
+          <img
+            src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/1339/Port-Blair%20Andaman.jpg?crop=134:207&downsize=134:207"
+            alt=""
+          />
+          <div class="content">
+            <h3><i class="fa fa-map-marker-alt"></i> Andaman</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Veritatis, nam!
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <div class="price">48000INR<span>68000INR</span></div>
+            <a
+              href="https://holidayz.makemytrip.com/holidays/india/search?dest=Andaman"
+              class="btn"
+              >book now</a
+            >
+          </div>
+        </div>
+        <div class="box">
+          <img
+            src="https://imgcld.yatra.com/ytimages/image/upload/t_holidays_srplist_desktop_hc/v3249767768/MarketPlaceHolidays/India/Jammu%20and%20Kashmir/Leh/shutterstock_614171726_dYJgcp.jpg"
+            alt=""
+          />
+          <div class="content">
+            <h3><i class="fa fa-map-marker-alt"></i> Ladakh</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Veritatis, nam!
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <div class="price">33690INR<span>40000INR</span></div>
+            <a
+              href="https://packages.yatra.com/holidays/dom/details.htm?packageId=MPP-1863-40737&parentPageId=af491149-41e3-447d-a300-78224c169c50"
+              class="btn"
+              >book now</a
+            >
+          </div>
+        </div>
+        <div class="box">
+          <img
+            src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/3766/Picturesque%20view%20of%20snow-covered%20hills%20in%20Gulmarg.jpeg?crop=134:207&downsize=134:207"
+            alt=""
+          />
+          <div class="content">
+            <h3><i class="fa fa-map-marker-alt"></i> Kashmir</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Veritatis, nam!
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <div class="price">23700INR<span>33700INR</span></div>
+            <a
+              href="https://holidayz.makemytrip.com/holidays/india/search?dest=Kashmir"
+              class="btn"
+              >book now</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- services section -->
+    <section class="contact" id="contact">
+      <h1 class="heading">
+        <span>s</span>
+        <span>e</span>
+        <span>r</span>
+        <span>v</span>
+        <span>i</span>
+        <span>c</span>
+        <span>e</span>
+        <span>s</span>
+      </h1>
+      <div class="box-container">
+        <div class="box">
+          <i class="fas fa-hotel"></i>
+          <h3 style="display: inline-block">Affordable Hotels</h3>
+        </div>
+        <div class="box">
+          <i class="fas fa-plane"></i>
+          <h3 style="display: inline-block">Flight Booking</h3>
+        </div>
+        <div class="box">
+          <i class="fas fa-map"></i>
+          <h3 style="display: inline-block">Itinerary Planning</h3>
+        </div>
+        <div class="box">
+          <i class="fas fa-comments"></i>
+          <h3 style="display: inline-block">Customer Reviews</h3>
+          <br />
+          <button onclick="openReviewPopup()" class="btn">
+            Leave a Review
+          </button>
+          <!-- Reviews -->
+          <div class="reviews">
+            <div class="column">
+              <div class="review">
+                <p class="content">
+                  "Its effectiveness speaks volumes. It quietly delivers on its
+                  promises, making it a reliable companion for the mundane
+                  travelling tasks."
+                </p>
+                <div class="stars">
+                  <span class="star-icon">&#9733;</span>
+                  <span class="star-icon">&#9733;</span>
+                  <span class="star-icon">&#9733;</span>
+                  <span class="star-icon">&#9733;</span>
+                  <span class="star-icon">&#9734;</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="review">
+                <p class="content">
+                  "Good product, meets all the basic requirements and has a easy
+                  to use UI.The number of options can be increased, therby
+                  increasing it's utility."
+                </p>
+                <div class="stars">
+                  <span class="star-icon">&#9733;</span>
+                  <span class="star-icon">&#9733;</span>
+                  <span class="star-icon">&#9733;</span>
+                  <span class="star-icon">&#9734;</span>
+                  <span class="star-icon">&#9734;</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="review">
+                <p class="content">
+                  "Its intuitive user interface makes navigation a breeze.
+                  Overall, it's a solid choice for those seeking simplicity and
+                  functionality in one."
+                </p>
+
+                <div class="stars">
+                  <span class="star-icon">&#9733;</span>
+                  <span class="star-icon">&#9733;</span>
+                  <span class="star-icon">&#9733;</span>
+                  <span class="star-icon">&#9734;</span>
+                  <span class="star-icon">&#9734;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="reviewModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeReviewPopup()">&times;</span>
+            <h2>Leave a Review:</h2>
+
+            <form id="reviewForm">
+              <textarea
+                id="review"
+                name="review"
+                rows="4"
+                cols="60"
+                required
+              ></textarea>
+            </form>
+            <h2>Email:</h2>
+            <form id="reviewFormEmail">
+              <textarea
+                id="email"
+                name="email"
+                rows="2"
+                cols="60"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              ></textarea>
+
+              <button type="submit">Submit Review</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section> 
+
+</div>
+    <div class="footer">
+      <div class="footer-section">
+        <div class="logo">
+          <img src="logo2.png" alt="Loading.." style="border-radius: 20px" />
+          <p>Your Ultimate Itinerary Creator</p>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Useful Links</h3>
+        <ul>
+          <li><a href="/landingpage">Home</a></li>
+          <li><a href="#book">Book</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#contact">Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="#">Forums</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Partners</h3>
+        <ul>
+          <li><a href="#">Partner 1</a></li>
+          <li><a href="#">Partner 2</a></li>
+          <li><a href="#">Partner 3</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <p>
+          Discover, plan, and explore with Unravel Travel. Whether you're
+          looking for a serene getaway or an adventurous journey, we've got you
+          covered. With our intuitive itinerary creator, crafting your dream
+          trip has never been easier.
+        </p>
+      </div>
+    </div>
+  </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const bookingForm = document.getElementById('booking-form')
+
+      bookingForm.addEventListener('submit', function (event) {
+        event.preventDefault() // Prevent the default form submission
+
+        // Get form values
+        const origin = document.getElementById('originDropdown').value
+        const destination = document.getElementById('destinationDropdown').value
+        const arrivalTime = document.getElementById('arrivalDate').value
+        const departureTime = document.getElementById('leavingDate').value
+
+        // Construct URL with parameters
+        let url = 'http://localhost:5050/flight' // Replace with your actual destination URL
+        url += '?origin=' + encodeURIComponent(origin)
+        url += '&destination=' + encodeURIComponent(destination)
+        url += '&arrivalTime=' + encodeURIComponent(arrivalTime)
+        url += '&departureTime=' + encodeURIComponent(departureTime)
+
+        // Redirect to the constructed URL
+        window.location.href = url
+      })
+    })
+    //Frontend js:
+    let searchBtn = document.querySelector('#search-btn')
+    let searchBar = document.querySelector('#search-bar-container')
+    let formBtn = document.querySelector('#login-btn')
+    let loginForm = document.querySelector('.login-form-container')
+    let formClose = document.querySelector('#form-close')
+    let menu = document.querySelector('#menu-bar')
+    let navbar = document.querySelector('.navbar')
+
+    window.onscroll = () => {
+      searchBtn.classList.remove('fa-times')
+      searchBar.classList.remove('active')
+      menu.classList.remove('fa-times')
+      navbar.classList.remove('active')
+      loginForm.classList.remove('active')
+    }
+    menu.addEventListener('click', () => {
+      menu.classList.toggle('fa-times')
+      navbar.classList.toggle('active')
+    })
+    searchBtn.addEventListener('click', () => {
+      searchBtn.classList.toggle('fa-times')
+      searchBar.classList.toggle('active')
+    })
+    formBtn.addEventListener('click', () => {
+      loginForm.classList.add('active')
+    })
+    formClose.addEventListener('click', () => {
+      loginForm.classList.remove('active')
+    })
+    let videoBtns = document.querySelectorAll('.vid-btn')
+
+    $(document).ready(function () {
+      var currentVideoIndex = 0 // Start from the first video (index 0)
+      var totalVideos = $('.vid-btn').length
+      var videoInterval
+
+      function playVideo(index) {
+        $('.video-container video').each(function () {
+          this.pause()
+        })
+        $('.video-container video').eq(index).get(0).play()
+      }
+
+      $('.vid-btn').click(function () {
+        clearInterval(videoInterval)
+        var clickedIndex = $(this).index()
+        playVideo(clickedIndex)
+        currentVideoIndex = clickedIndex
+        startVideoInterval()
+      })
+
+      function startVideoInterval() {
+        videoInterval = setInterval(function () {
+          currentVideoIndex = (currentVideoIndex + 1) % totalVideos // Increment index, looping back to 0 when it reaches the last index
+          playVideo(currentVideoIndex)
+        }, 5000) // 5 seconds interval
+      }
+
+      startVideoInterval()
+    })
+
+    function openReviewPopup() {
+      var modal = document.getElementById('reviewModal')
+      modal.style.display = 'block'
+    }
+
+    function closeReviewPopup() {
+      var modal = document.getElementById('reviewModal')
+      modal.style.display = 'none'
+    }
+    
+ function sendMessage() {
+  const userInput = document.getElementById('user-input');
+  const userMessage = userInput.value;
+  const chatBox = document.getElementById('chat-box');
+
+  // Display user message in the chat box
+  chatBox.innerHTML += `<div class="question"><div class="user-message">${userMessage}</div><i class="fa fa-user"></i></div>`;
+
+ axios.post('http://127.0.0.1:5000/query', { 
+      message: userMessage,
+      placelist: placelist
+    })
+      .then(response => {
+        // Display bot response in the chat box
+        const botResponse = response.data.answerofcb;
+        chatBox.innerHTML += `<div class="response"><i class="fas fa-robot"></i><div class="bot-message">${botResponse}</div></div>`;
+      })
+      .catch(error => {
+        console.error('Error sending message:', error);
+      });
+
+    // Reset input field value to its placeholder value
+    userInput.value = '';
+  }
+  const chatContainer = document.getElementById('chat-container');
+  chatContainer.style.display = 'none';
+
+document.addEventListener("DOMContentLoaded", function() {
+  const openChatIcon = document.getElementById('open-chat');
+  const closeChatIcon = document.getElementById('close-chat');
+  
+  const chatbot = document.getElementById('chatbot');
+
+  openChatIcon.addEventListener('click', function() {
+    chatContainer.style.display = 'block';
+    chatbot.style.display = 'none';
+  });
+
+  closeChatIcon.addEventListener('click', function() {
+    chatContainer.style.display = 'none';
+    chatbot.style.display = 'block';
+  });
+ });
+
+  </script>
+</html>

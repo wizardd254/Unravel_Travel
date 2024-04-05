@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="landingpage.css" />
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form id="hotel-booking-form">
+    <ul>
+        <% hotellist.forEach(hotel => { %>
+          <li>
+            <div class="ticket">
+              <div class="ticket-header">
+                <h2><i class="fas fa-hotel"></i> <%= hotel.name %></h2>
+              </div>
+              <div class="ticket-info">
+                <div class="thumbnail">
+                  <img src="<%= hotel.thumbnail %>" alt="Hotel Thumbnail">
+                </div>
+                <div class="hotel-info">
+                  <p><strong>Price:</strong> <%= hotel.price %></p>
+                  <p><strong>Rating:</strong> <%= hotel.rating %></p>
+                  <div class="days-checkboxes">
+                    <% for(let i = 1; i <= days; i++) { %>
+                      <label class="day-checkbox-label">
+                        <input type="checkbox" class="day-checkbox" name="day<%= i %>" value="<%= i %>" onchange="toggleDayAvailability(<%= i %>, this.checked)">
+                        Day <%= i %>
+                      </label>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+        
+            </div>
+          </li>
+        <% }); %>
+      </ul>
+      <button type="submit">Submit</button>
+      </form
+  </body>
+  <script>
+        // window.location.href = url;
+    const  placeName="<%= placeName %>" ;
+    const checkInDate = "<%= checkInDate %>";
+    const checkOutDate = "<%= checkOutDate %>";
+    console.log(checkInDate);
+    console.log(checkOutDate);
+    console.log(placeName);
+
+    const hotelBookingForm = document.getElementById("hotel-booking-form"); // make sure this ID matches your form's ID
+   document.addEventListener("DOMContentLoaded", function() {
+    // Define variables to store placeName, checkInDate, and checkOutDate
+    const placeName = "<%= placeName %>";
+    const checkInDate = "<%= checkInDate %>";
+    const checkOutDate = "<%= checkOutDate %>";
+
+    // Log the values to verify
+    console.log(placeName);
+    console.log(checkInDate);
+    console.log(checkOutDate);
+
+    // Get the form element
+    const hotelBookingForm = document.getElementById("hotel-booking-form");
+
+    // Add event listener for form submission
+    hotelBookingForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Get number of days
+        const numberOfDays = calculateDays(checkInDate, checkOutDate);
+
+        // Get selected hotels and corresponding days
+        const selectedHotels = [];
+        const checkboxes = document.querySelectorAll('.day-checkbox');
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                const day = parseInt(checkbox.value);
+                const hotelInfo = checkbox.closest('li').querySelector('.ticket-info');
+                const hotel = {
+                    day: day,
+                    name: checkbox.closest('.ticket').querySelector('.ticket-header h2').innerText.trim(),
+                    price: hotelInfo.querySelector('.hotel-info p:nth-of-type(1)').innerText,
+                    rating: hotelInfo.querySelector('.hotel-info p:nth-of-type(2)').innerText,
+                    thumbnail: hotelInfo.querySelector('.thumbnail img').src
+                };
+                selectedHotels.push(hotel);
+            }
+        });
+
+        // Log the selected hotels for verification
+        console.log(selectedHotels);
+
+        // Construct URL with parameters
+        let url = "http://localhost:5050/print"; // Replace with your actual destination URL
+        url += "?placeName=" + encodeURIComponent(placeName);
+        url += "&checkInDate=" + encodeURIComponent(checkInDate);
+        url += "&checkOutDate=" + encodeURIComponent(checkOutDate);
+        url += "&days=" + encodeURIComponent(numberOfDays);
+        url += "&selectedHotels=" + JSON.stringify(selectedHotels);
+
+        // Redirect to the constructed URL
+        window.location.href = url;
+    });
+
+    // Function to calculate days difference
+    function calculateDays(checkInDate, checkOutDate) {
+        const checkIn = new Date(checkInDate);
+        const checkOut = new Date(checkOutDate);
+        const timeDifference = checkOut.getTime() - checkIn.getTime();
+        const daysDifference = timeDifference / (1000 * 3600 * 24);
+        return daysDifference;
+    }
+});
+</script>
+<script>
+  function toggleDayAvailability(dayNumber, isChecked) {
+    // Get all checkboxes for the given day number
+    const allCheckboxesForDay = document.querySelectorAll(.day-checkbox[value="${dayNumber}"]);
+    // Loop over each checkbox and set its disabled property based on isChecked
+    allCheckboxesForDay.forEach(checkbox => {
+      if(checkbox !== event.target) { // Skip the checkbox that triggered the event
+        checkbox.disabled = isChecked; // Disable or enable based on isChecked
+        if (!isChecked) { // If unchecking, also uncheck all disabled checkboxes
+          checkbox.checked = false;
+        }
+      }
+    });
+  }
+
+  // Additional script for handling form submission
+</script>
+</html>

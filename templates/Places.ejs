@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="landingpage.css" />
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <form id="hotel-booking-form">
+    <ul>
+      <% placelist.forEach(place => { %>
+        <li>
+          <div class="ticket">
+            <div class="ticket-header">
+              <h2><i class="fas fa-hotel"></i> <%= place.name %></h2>
+            </div>
+            <div class="ticket-info">
+              <div class="thumbnail">
+                <img src="<%= place.thumbnail %>" alt="Hotel Thumbnail">
+              </div>
+              <div class="hotel-info">
+                <p><strong>Address:</strong> <%= place.address %></p>
+                <p><strong>Rating:</strong> <%= place.rating %></p>
+                <div class="days-checkboxes">
+                  <% for(let i = 1; i <= day; i++) { %>
+                    <label class="day-checkbox-label">
+                      <input type="checkbox" class="day-checkbox" name="day<%= i %>" value="<%= i %>" data-place="<%= place.name %>" onchange="toggleDayAvailability(<%= i %>, this.checked)">
+                      Day <%= i %>
+                    </label>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      <% }); %>
+    </ul>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get the form element
+    const hotelBookingForm = document.getElementById("hotel-booking-form");
+
+    // Add event listener for form submission
+    hotelBookingForm.addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Get selected hotels and corresponding days
+      const selectedPlaces = [];
+      const checkboxes = document.querySelectorAll('.day-checkbox:checked');
+      checkboxes.forEach(checkbox => {
+        const day = parseInt(checkbox.value);
+        const placeName = checkbox.dataset.place;
+        const placeInfo = checkbox.closest('li').querySelector('.ticket-info');
+        const place = {
+          day: day,
+          name: placeName,
+          address: placeInfo.querySelector('.hotel-info p:nth-of-type(1)').innerText,
+          rating: placeInfo.querySelector('.hotel-info p:nth-of-type(2)').innerText,
+          thumbnail: placeInfo.querySelector('.thumbnail img').src
+        };
+        selectedPlaces.push(place);
+      });
+
+      // Log the selected hotels for verification
+      console.log(selectedPlaces);
+
+      // Construct URL with parameters
+      let url = "http://localhost:5050/Itinerary"; // Replace with your actual destination URL
+      url += "?selectedPlaces=" + encodeURIComponent(JSON.stringify(selectedPlaces));
+
+      // Redirect to the constructed URL
+      window.location.href =url ;
+    });
+
+    // Function to toggle checkbox availability
+    function toggleDayAvailability(dayNumber, isChecked) {
+      // Get all checkboxes for the given day number
+      const allCheckboxesForDay = document.querySelectorAll('.day-checkbox[name="day' + dayNumber + '"]');
+      // Loop over each checkbox and set its disabled property based on isChecked
+      allCheckboxesForDay.forEach(checkbox => {
+        if (checkbox !== event.target) { // Skip the checkbox that triggered the event
+          checkbox.disabled = isChecked; // Disable or enable based on isChecked
+          if (!isChecked) { // If unchecking, also uncheck all disabled checkboxes
+            checkbox.checked = false;
+          }
+        }
+      });
+    }
+  });
+</script>
+</html>

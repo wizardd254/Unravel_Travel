@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="landingpage.css" />
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <!-- header section -->
+    <div id="menu-bar" class="fas fa-bars"></div>
+    <header>
+      <a href="#" class="logo-navbar"
+        ><img src="logo2.png" alt="Loading.."
+      /></a>
+      <nav class="navbar">
+        <a href="/landinpage">home</a>
+        <a href="/landinpage#book">book</a>
+        <a href="/landinpage#packages">packages</a>
+        <a href="/landinpage#contact">contact</a>
+        <a href="/blog">blog</a>
+        <!-- <a href="#services">services</a> -->
+        <!-- <a href="#review">review</a> -->
+        <a href="/aboutus">About Us</a>
+      </nav>
+
+      <div class="icons">
+        <i class="fa fa-user" id="login-btn"><a href="/login">Logout</a></i>
+      </div>
+      
+      I
+    </header>
+
+    <!-- home section -->
+      <h1 class="heading">
+        <span>b</span>
+        <span>o</span>
+        <span>o</span>
+        <span>k</span>
+        <span class="space"></span>
+        <span>n</span>
+        <span>o</span>
+        <span>w</span>
+      </h1>
+      <div class="row">
+        
+    <!-- flight booking section --> 
+
+    <h1 style="font-size: 3rem; text-align: center">Departing Flights </h1>
+    <ul class="departing-flights"> <!-- Added class name for departing flights -->
+        <% outflightlist.forEach(flight=> { %>
+            <li>
+                <div class="flight" data-id="<%= flight.id %>">
+                    <div class="ticket">
+                        <div class="ticket-header">
+                            <h2><i class="fas fa-plane"></i> Flight Ticket</h2>
+                    
+                        </div>
+                        <div class="ticket-info">
+                            <div class="flight-info">
+                                <p><strong><%= flight.departureAirport %></strong> <span id="departure-from"></span></p>
+                                <p><strong><%= flight.departureTime %></strong> <span id="departure-departure-time"></span></p>
+                            </div>
+                            <div class="flight-info">
+                                <p><strong><%= flight.arrivalAirport %></strong> <span id="departure-to"></span></p>
+                                <p><strong><%= flight.arrivalTime %></strong> <span id="departure-arrival-time"></span></p>
+                            </div>
+                            <div class="airline-info">
+                                <p><strong><%= flight.airline %></strong> <span id="departure-airline-name"></span></p>
+                                <p><strong><%= flight.flightNumber %></strong> <span id="departure-flight-number"></span></p>
+                                <p><strong>₹<%=flight.price %></strong> <span id="departure-price"></span></p>
+                            </div>
+                       </div>
+                        <div class="buttons" style="align-items: center;text-align: center">
+                          <button class="add-btn" style="display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 3rem;
+  border: 0.2rem solid var(--orange);
+  cursor: pointer;
+  font-size: 1.7rem">Add</button>
+                        <button class="remove-btn" disabled style="display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 3rem;
+  border: 0.2rem solid var(--orange);
+  cursor: pointer;
+  font-size: 1.7rem">Remove</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+            <% }); %>
+    </ul>
+    <h1 style="font-size: 3rem; text-align: center;">Returning Flights</h1>
+    <ul class="returning-flights"> <!-- Added class name for returning flights -->
+        <% inflightlist.forEach(flight=> { %>
+            <li>
+                <div class="flight" data-id="<%= flight.id %>">
+                    <div class="ticket">
+                        <div class="ticket-header">
+                            <h2><i class="fas fa-plane"></i> Flight Ticket</h2>
+                    
+                        </div>
+                        <div class="ticket-info">
+                            <div class="flight-info">
+                                <p><strong>
+                                        <%= flight.departureAirport %>
+                                    </strong> <span id="departure-from"></span></p>
+                                <p><strong>
+                                        <%= flight.departureTime %>
+                                    </strong> <span id="departure-time"></span></p>
+                            </div>
+                            <div class="flight-info">
+                                <p><strong>
+                                        <%= flight.arrivalAirport %>
+                                    </strong> <span id="departure-to"></span></p>
+                                <p><strong>
+                                        <%= flight.arrivalTime %>
+                                    </strong> <span id="departure-arrival-time"></span></p>
+                            </div>
+                            <div class="airline-info">
+                                <p><strong>
+                                        <%= flight.airline %>
+                                    </strong> <span id="departure-airline-name"></span></p>
+                                <p><strong>
+                                        <%= flight.flightNumber %>
+                                    </strong> <span id="departure-flight-number"></span></p>
+                                <p><strong>₹<%=flight.price %></strong> <span id="departure-price"></span></p>
+                            </div>
+                        </div>
+                        <div class="buttons" style="align-items: center;text-align: center;">
+                        <button class="add-btn2" style="display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 3rem;
+  border: 0.2rem solid var(--orange);
+  cursor: pointer;
+  font-size: 1.7rem">Add</button>
+                        <button class="remove-btn2" disabled style="display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 3rem;
+  border: 0.2rem solid var(--orange);
+  cursor: pointer;
+  font-size: 1.7rem">Remove</button>
+                    </div>
+                    </div> 
+                    
+                </div>
+            </li>
+            <% }); %>
+    </ul>
+    <div class="select-button"
+      style="text-align: center;align-items: center;">
+    <button id="select-hotels-btn" disabled class="btn">Select Hotels</button>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-section">
+        <div class="logo">
+          <img src="logo2.png" alt="Loading.." style="border-radius: 20px;" />
+          <p>Your Ultimate Itinerary Creator</p>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Useful Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="contactus.ejs">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="#">Forums</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Partners</h3>
+        <ul>
+          <li><a href="#">Partner 1</a></li>
+          <li><a href="#">Partner 2</a></li>
+          <li><a href="#">Partner 3</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <p>
+          Discover, plan, and explore with Unravel Travel. Whether you're
+          looking for a serene getaway or an adventurous journey, we've got you
+          covered. With our intuitive itinerary creator, crafting your dream
+          trip has never been easier.
+        </p>
+      </div>
+    </div>
+    
+  </body>
+  <script>
+        const outflightlistData = <%- JSON.stringify(outflightlist) %>;
+        const inflightlistData = <%- JSON.stringify(inflightlist) %>;
+        const outboundDate="<%= outboundDate%>";
+        const inboundDate = "<%= inboundDate%>";
+        const destinationName="<%= destinationName %>";
+        
+    
+   document.addEventListener("DOMContentLoaded", function () {
+        const addButtons = document.querySelectorAll(".add-btn");
+        const addButtons2 = document.querySelectorAll(".add-btn2");
+        const removeButtons = document.querySelectorAll(".remove-btn");
+        const removeButtons2 = document.querySelectorAll(".remove-btn2");
+        const selectHotelsBtn = document.getElementById("select-hotels-btn");
+
+        const selectedFlights = { departing: null, returning: null };
+
+        function checkSelection() {
+            if (selectedFlights.departing && selectedFlights.returning) {
+                selectHotelsBtn.disabled = false;
+            } else {
+                selectHotelsBtn.disabled = true;
+            }
+        }
+
+        function disableOtherAddButtons(buttons, currentButton) {
+            buttons.forEach((button) => {
+                if (button !== currentButton) {
+                    button.disabled = true;
+                }
+            });
+        }
+        function enableOtherAddButtons(buttons) {
+           buttons.forEach((button) => {
+               button.disabled = false;
+           });
+         }
+        addButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                const flightDiv = this.parentElement.parentElement;
+                const flightId = flightDiv.getAttribute("data-id");
+                selectedFlights.departing = flightId;
+                disableOtherAddButtons(addButtons, button);
+                flightDiv.querySelector(".add-btn").disabled = true;
+                flightDiv.querySelector(".remove-btn").disabled = false;
+                checkSelection();
+            });
+        });
+
+        addButtons2.forEach((button) => {
+            button.addEventListener("click", function () {
+                const flightDiv = this.parentElement.parentElement;
+                const flightId = flightDiv.getAttribute("data-id");
+                selectedFlights.returning = flightId;
+                disableOtherAddButtons(addButtons2, button);
+                flightDiv.querySelector(".add-btn2").disabled = true;
+                flightDiv.querySelector(".remove-btn2").disabled = false;
+                checkSelection();
+            });
+        });
+
+        removeButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                const flightDiv = this.parentElement.parentElement;
+                selectedFlights.departing = null;
+                button.disabled = true;
+                enableOtherAddButtons(addButtons, button);
+                flightDiv.querySelector(".add-btn").disabled = false;
+                checkSelection();
+            });
+        });
+
+        removeButtons2.forEach((button) => {
+            button.addEventListener("click", function () {
+                const flightDiv = this.parentElement.parentElement;
+                selectedFlights.returning = null;
+                button.disabled = true;
+                enableOtherAddButtons(addButtons2, button);
+                flightDiv.querySelector(".add-btn2").disabled = false;
+                checkSelection();
+            });
+        });
+
+        selectHotelsBtn.addEventListener("click", function () {
+                const departingFlightId = selectedFlights.departing;
+                const returningFlightId = selectedFlights.returning;
+                const userId = "<%= userId %>"; // Access the UserID from EJS template
+                if (departingFlightId && returningFlightId) {
+                    // Iterate over outflightlist to find the departing flight
+                    let departingFlight;
+                    outflightlistData.forEach((flight) => {
+                        if (flight.id === departingFlightId) {
+                            departingFlight = flight;
+                        }
+                    });
+                    // Iterate over inflightlist to find the returning flight
+                    let returningFlight;
+                    inflightlistData.forEach((flight) => {
+                        if (flight.id === returningFlightId) {
+                            returningFlight = flight;
+                        }
+                    });
+                    console.log(returningFlight);
+                    console.log(departingFlight);
+                    // Redirect to /hotels route with UserID and flight details as query parameters
+                    window.location.href = `/Hotel?userId=${userId}&departing=${JSON.stringify(departingFlight)}&returning=${JSON.stringify(returningFlight)}&odate=${outboundDate}&idate=${inboundDate}&destinationName=${destinationName}`;
+                }
+            });
+    });
+
+</script>
+
+
+</html>

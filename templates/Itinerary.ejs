@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="landingpage.css" />
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<!-- header section -->
+<div id="menu-bar" class="fas fa-bars"></div>
+<header>
+    <a href="#" class="logo-navbar"><img src="logo2.png" alt="Loading.." /></a>
+    <nav class="navbar">
+        <a href="/landinpage">home</a>
+        <a href="/landinpage">book</a>
+        <a href="/landinpage">packages</a>
+        <!-- <a href="#services">services</a> -->
+        <!-- <a href="#review">review</a> -->
+        <a href="/landinpage">Service</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fa fa-user" id="login-btn"><a href="/login">Logout</a></i>
+    </div>
+
+    I
+</header>
+
+<!-- home section -->
+<h1 class="heading">
+    <span>I</span>
+    <span>T</span>
+    <span>I</span>
+    <span>N</span>
+    <span>E</span>
+    <span>R</span>
+    <span>A</span>
+    <span>R</span>
+    <span>Y</span>
+</h1>
+<body>
+    <% itineraries.forEach(itinerary=> { %>
+    <ul class="departing-flights"> <!-- Added class name for departing flights -->
+        <% itinerary.DepartingFlights.forEach(flight=> { %>
+            <li>
+                <div class="flight" data-id="<%= flight.id %>">
+                    <div class="ticket">
+                        <div class="ticket-header">
+                            <h2><i class="fas fa-plane"></i> Flight Ticket</h2>
+    
+                        </div>
+                        <div class="ticket-info">
+                            <div class="flight-info">
+                                <p><strong>
+                                        <%= flight.departureloc %>
+                                    </strong> <span id="departure-from"></span></p>
+                                <p><strong>
+                                        <%= flight.departuretime %>
+                                    </strong> <span id="departure-departure-time"></span></p>
+                            </div>
+                            <div class="flight-info">
+                                <p><strong>
+                                        <%= flight.destinationloc %>
+                                    </strong> <span id="departure-to"></span></p>
+                                <p><strong>
+                                        <%= flight.arrivaltime %>
+                                    </strong> <span id="departure-arrival-time"></span></p>
+                            </div>
+                            <div class="airline-info">
+
+                                <p><strong>₹<%=flight.price %></strong> <span id="departure-price"></span></p>
+                            </div>
+                        </div>
+                        <button class="add-btn">Add</button>
+                        <button class="remove-btn" disabled>Remove</button>
+                    </div>
+    
+                </div>
+            </li>
+            <% }); %>
+            <% itinerary.Days.forEach(day=> { %>
+                <li>
+                    <div class="ticket">
+                        <div class="ticket-header">
+                            <h2><i class="fas fa-hotel"></i>
+                                <%= day.Hotel.hotelname %>
+                            </h2>
+                        </div>
+                        <div class="ticket-info">
+                            <div class="thumbnail">
+                                <img src="<%= day.Hotel.hotelphoto %>" alt="Hotel Thumbnail">
+                            </div>
+                            <div class="hotel-info">
+                                <p><strong>Price:</strong>
+                                    <%= day.Hotel.price %>
+                                </p>
+                                <p><strong>Rating:</strong>
+                                    <%= day.Hotel.day %>
+                                </p>
+                                
+                            </div>
+                        </div>
+            
+                    </div>
+                </li>
+                <% }); %>
+        
+            <% itinerary.ArrivalFlights.forEach(flight=> { %>
+                <li>
+                    <div class="flight" data-id="<%= flight.id %>">
+                        <div class="ticket">
+                            <div class="ticket-header">
+                                <h2><i class="fas fa-plane"></i> Flight Ticket</h2>
+            
+                            </div>
+                            <div class="ticket-info">
+                                <div class="flight-info">
+                                    <p><strong>
+                                            <%= flight.departureloc %>
+                                        </strong> <span id="departure-from"></span></p>
+                                    <p><strong>
+                                            <%= flight.departuretime %>
+                                        </strong> <span id="departure-departure-time"></span></p>
+                                </div>
+                                <div class="flight-info">
+                                    <p><strong>
+                                            <%= flight.destinationloc %>
+                                        </strong> <span id="departure-to"></span></p>
+                                    <p><strong>
+                                            <%= flight.arrivaltime %>
+                                        </strong> <span id="departure-arrival-time"></span></p>
+                                </div>
+                                <div class="airline-info">
+            
+                                    <p><strong>₹<%=flight.price %></strong> <span id="departure-price"></span></p>
+                                </div>
+                            </div>
+                            <button class="add-btn">Add</button>
+                            <button class="remove-btn" disabled>Remove</button>
+                        </div>
+            
+                    </div>
+                </li>
+                <% }); %>
+<% }); %>
+
+    </ul>
+</body>
+
+<div class="row">
+    <div class="footer">
+        <div class="footer-section">
+            <div class="logo">
+                <img src="logo2.png" alt="Loading.." style="border-radius: 20px;" />
+                <p>Your Ultimate Itinerary Creator</p>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Useful Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="contactus.ejs">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Community</h3>
+            <ul>
+                <li><a href="#">Forums</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Events</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Partners</h3>
+            <ul>
+                <li><a href="#">Partner 1</a></li>
+                <li><a href="#">Partner 2</a></li>
+                <li><a href="#">Partner 3</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <p>
+                Discover, plan, and explore with Unravel Travel. Whether you're
+                looking for a serene getaway or an adventurous journey, we've got you
+                covered. With our intuitive itinerary creator, crafting your dream
+                trip has never been easier.
+            </p>
+        </div>
+    </div>
+</html>
